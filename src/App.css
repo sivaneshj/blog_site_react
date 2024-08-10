@@ -10,6 +10,14 @@
 html {
   font-size: 16px;
 }
+.common{
+    display: flex;
+    height: 80%;
+    font-weight: 600;
+    font-size: 1.3rem;
+    justify-content: center;
+    align-items: center;
+}
 
 body {
   min-height: 100vh;
@@ -129,7 +137,7 @@ body {
   cursor: pointer;
 }
 
-.Home, .NewPost, .PostPage, .About, .Missing {
+.Home,.Edit, .NewPost, .PostPage, .About, .Missing {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;

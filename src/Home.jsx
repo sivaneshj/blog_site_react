@@ -1,9 +1,11 @@
 import React from 'react'
 import Feed from './Feed.jsx'
-const Home = ({val}) => {
+const Home = ({val,error,loading}) => {
   return (
     <div className='Home'>
-      <Feed val={val}/>
+      {loading && <p className='common'>Loading....</p>}
+      {error && !loading&& <p className='common'>{error}</p>}
+      {!error &&!loading&& <Feed val={val}/>}
     </div>
   )
 }

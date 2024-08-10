@@ -1,30 +1,23 @@
 import React from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
-const PostPage = ({val,setval}) => {
-  const navigate=useNavigate()
+const PostPage = ({val,handledelete,loading,error}) => {
   const par = useParams()
   var item = val.find((item)=>{
     return item.id === par.id
   })
-  function handledelete(){
-    var filtered = val.filter((item)=>{
-      return item.id === par.id? item.id !== par.id:item
-    })
-    setval(filtered)
-    navigate('/')
-  }
   return (
     <div className='PostPage'>
       <article className='Post'>
-        {item && 
+        {item && !error && 
         <>
           <h2>{item.title}</h2>
           <p className='postDate'>{item.time}</p>
           <p className='postBody'>{ item.des}</p>
-          <button className='deleteButton' onClick={handledelete}>Delete</button>        
+          <Link to={`/edit/${par.id}`}><button className='editButton'>Edit</button></Link>
+          <button className='deleteButton' onClick={()=>handledelete(par)}>Delete</button>        
         </>}
-        {!item && 
+        {!item && !loading && 
         <>
           <h2>Post Not Found</h2>
           <p>Well, that's disappointing.</p>
@@ -32,6 +25,8 @@ const PostPage = ({val,setval}) => {
             <Link to='/'>Visit Our Homepage</Link>
           </p>
         </>}
+        {loading && <p className='common'>Loading...</p>}
+        { error && <p className='common'>{error}</p>}
      </article>
     </div>
   )
