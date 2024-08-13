@@ -7,9 +7,9 @@ const Edit = () => {
     const {id}=useParams()
     var items=val.find(item=>item.id === id)
     useEffect(()=>{
-        {!loading && setedittitle(items.title)}
-        {!loading && seteditdes(items.des)}
-    },[seteditdes,setedittitle,items,loading])
+        setedittitle(items.title)
+        seteditdes(items.des)
+    },[seteditdes,setedittitle,items])
     
   return (
     <div className='Edit'>
