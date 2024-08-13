@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import DataContext from './context/DataContext'
 
-const PostPage = ({val,handledelete,loading,error}) => {
+const PostPage = () => {
+  const{val,handledelete,loading,error}=useContext(DataContext)
   const par = useParams()
   var item = val.find((item)=>{
     return item.id === par.id
